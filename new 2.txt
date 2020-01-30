@@ -1,0 +1,15 @@
+#converte endereços para coordenadas geograficas // refazer
+@places.route('/geocode', methods=['POST'])
+def geocode():
+    address = request.form.get('address')
+    user = request.form.get('user')
+    geo_locator = Nominatim()
+    try:
+        location = geo_locator.geocode(address)
+    except:
+        return redirect(url_for('main.profile'))
+    if not address:
+        #substituir por pagina de erro
+        return redirect(url_for('main.profile'))
+    #inserir retorno e inserção no banco separando por parametros .latitude e etc
+    return location

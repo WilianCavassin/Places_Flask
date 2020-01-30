@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+    Places
+</h1>
+<h2 class="subtitle">
+    Results of your search
+</h2>
+<br>
+<table class='table'>
+    <tr>
+        <thead>
+            <th><abbr title="Id">Id</abbr></th>
+            <th><abbr title="Name">Name</abbr></th>
+            <th><abbr title="Latitude">Latitude</abbr></th>
+            <th><abbr title="Longitude">Longitude</abbr></th>
+            <th><abbr title="Category">Category</abbr></th>
+            <th><abbr title="Total Votes">Votes</abbr></th>
+            <th><abbr title="Country">Country</abbr></th>
+            {% if current_user.is_authenticated %}
+            <th><abbr title="Vote">Vote</abbr></th>
+            <th><abbr title="Upload Photo">Upload Photo</abbr></th>
+            {% endif %}
+    </tr>
+    </thead>
+
+    <tbody>
+
+        {%for object in response%}
+        <tr>
+            <th>{{ object[0] }}</th>
+            <th>{{ object[1] }}</th>
+            <th>{{ object[2] }}</th>
+            <th>{{ object[3] }}</th>
+            <th>{{ object[4] }}</th>
+            <th>{{ object[5] }}</th>
+            <th>{{ object[6] }}</th>
+            <th>{{ object[7] }}</th>
+            <th><a href="#">Vote</a></th>
+            <th><a href="#">Upload Photo</a></th>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+<form>
+    <div class="field">
+        <div class="control">
+            <!--reformat the button-->
+            <button class="button is-block is-info is-large is-fullwidth">New Research'</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

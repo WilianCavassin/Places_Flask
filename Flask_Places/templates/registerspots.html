@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+    Places
+</h1>
+<h2 class="subtitle">
+    Register Spot
+</h2>
+<form action="/registerspots" enctype=multipart/form-data  method="POST">
+    <div class="field">
+        <div class="control">
+            <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <input class="input is-large" type="text" name="street" placeholder="Street" autofocus="">
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <input class="input is-large" type="text" name="number" placeholder="Number" autofocus="">
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <input class="input is-large" type="text" name="city" placeholder="City" autofocus="">
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <input class="input is-large" type="text" name="state" placeholder="State/Province" autofocus="">
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <input class="input is-large" type="text" name="country" placeholder="Country" autofocus="">
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <input class="input is-large" type="text" name="category" placeholder="Category" autofocus="">
+        </div>
+    </div>
+    <div id="file-js-example" class="file has-name is-fullwidth is-info">
+        <label class="file-label">
+          <input class="file-input" type="file" name="file">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose an image to upload...
+            </span>
+          </span>
+          <span class="file-name">
+            No image uploaded
+          </span>
+        </label>
+      </div>
+      
+      <script>
+        const fileInput = document.querySelector('#file-js-example input[type=file]');
+        fileInput.onchange = () => {
+          if (fileInput.files.length > 0) {
+            const fileName = document.querySelector('#file-js-example .file-name');
+            fileName.textContent = fileInput.files[0].name;
+          }
+        }
+      </script>
+      <br>
+    <button class="button is-block is-info is-large is-fullwidth">Register</button>
+</form>
+{% endblock %}
